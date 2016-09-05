@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+    <script src="js/script.js"></script>
+  </head>
+  <body>
+    <div class="col-lg-6">
+      <h2>With realtime progress</h2>
+      <form action="/create_account_with_realtime" id="create-account-form-with-realtime" method="POST">
+	<input type="hidden" value="" id="uid" name="uid">
+	<input type="hidden" value="" id="name" name="name">
+	<button class="btn btn-lg btn-success" type="submit">Create my fake account!</button>
+
+	<div class="progress progress-striped active hide">
+	  <div class="progress-bar progress-bar-info" id="realtime-progress-bar" role="progressbar" style="width: 0%;"></div>
+	</div>
+	<p class="message"></p>
+      </form>
+    </div>
+  </body>
+</html>
