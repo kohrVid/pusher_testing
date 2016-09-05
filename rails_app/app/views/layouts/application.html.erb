@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RailsApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "application" %>
+  <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+  <script>
+    $(document).ready(function () {
+
+      // Enable pusher logging - don't include this in production
+      Pusher.logToConsole = true;
+
+      var pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>', {
+	cluster: '<%= ENV["PUSHER_CLUSTER"] %>',
+	encrypted: true
+      });
+
+      var channel = pusher.subscribe('test_channel');
+      channel.bind('my_event', function(data) {
+	 $('#all-messages').append('<p>' +  data.body + data.created_at + '</p>');
+
+      });
+    });
+  </script>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
